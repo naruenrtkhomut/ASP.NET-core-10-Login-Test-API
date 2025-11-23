@@ -26,7 +26,6 @@ namespace api.Models.Connection
                 comm.Parameters.Add(new NpgsqlParameter("@mode", NpgsqlTypes.NpgsqlDbType.Integer) { Value = mode });
                 if (in_data == null) comm.Parameters.Add(new NpgsqlParameter("@in_data", NpgsqlTypes.NpgsqlDbType.Jsonb) { Value = DBNull.Value });
                 else comm.Parameters.Add(new NpgsqlParameter("@in_data", NpgsqlTypes.NpgsqlDbType.Jsonb) { Value = in_data.ToString() });
-                Console.WriteLine(comm.CommandText);
                 NpgsqlDataReader reader = await comm.ExecuteReaderAsync();
                 if (await reader.ReadAsync())
                 {
